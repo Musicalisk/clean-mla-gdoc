@@ -5,23 +5,23 @@
   "main": "dist/clean-mla-gdoc.js",
   "browser": "dist/clean-mla-gdoc.min.js",
   "keywords": [
-    "\"mla\"",
-    "\"google-docs\"",
-    "\"academic\""
+    "mla",
+    "google-docs",
+    "academic"
   ],
   "homepage": "https://github.com/Musicalisk/clean-mla-gdoc#README",
   "bugs": {
     "url": "https://github.com/Musicalisk/clean-mla-gdoc/issues"
   },
   "publishConfig": {
-    "registry": "https://npmjs.com/"
+    "registry": "https://registry.npmjs.com/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Musicalisk/clean-mla-gdoc.git"
   },
   "license": "GPL-3.0",
-  "author": "\"Musicalisk <Musicalisk.travail@tuta.io>",
+  "author": "Musicalisk <Musicalisk.travail@tuta.io>",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
