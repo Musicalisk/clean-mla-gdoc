@@ -1,4 +1,4 @@
-# cleanMLAGDoc.js v1.0.2
+# cleanMLAGDoc.js v1.0.3
 
 A lightweight JavaScript library specifically designed to reformat **Google Docs HTML exports** into the **MLA (Modern Language Association) Style** layout. It handles physical pagination, alphabetical sorting of Works Cited, and provides a "DRAFT" watermark feature.
 
@@ -34,6 +34,7 @@ Include the minified script in your project. The library will automatically dete
 ```html
 <!-- Include the library at the end of your body tag -->
 <script src="https://cdn.jsdelivr.net"></script>
+```
 
 ## Printing
 Printing is **seamless**. Because the library handles all pagination, margins, and font styling via a specialized `@media print` stylesheet, you do not need to adjust your browser's print settings. Simply use `Ctrl + P` (or `Cmd + P`) and the document will print exactly as it appears on the screen.

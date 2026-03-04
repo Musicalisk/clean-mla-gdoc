@@ -1,6 +1,6 @@
 {
   "name": "clean-mla-gdoc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight JavaScript library to reformat Google Docs HTML exports into MLA Style layout with auto-pagination and Works Cited sorting.",
   "main": "dist/cleanMLAGDoc.js",
   "browser": "dist/cleanMLAGDoc.min.js",
@@ -17,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/Musicalisk/clean-mla-gdoc.git"
   },
-  "license": "ISC",
+  "license": "GPL-3.0",
   "author": "\"Musicalisk <Musicalisk.travail@tuta.io>",
   "type": "commonjs",
   "scripts": {
