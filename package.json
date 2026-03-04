@@ -13,9 +13,6 @@
   "bugs": {
     "url": "https://github.com/Musicalisk/clean-mla-gdoc/issues"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Musicalisk/clean-mla-gdoc.git"
