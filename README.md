@@ -49,8 +49,8 @@ Contributions are welcome! If Google Docs updates its HTML export structure and 
 
 ## Dependencies
 The library dynamically loads the following assets via [jsDelivr](https://www.jsdelivr.com) if they are not already present in the environment:
-* [jQuery 3.7.1](https://cdn.jsdelivr.net)
-* [Favicon.js 1.0.0](https://cdn.jsdelivr.net)
+* [jQuery 3.7.1](https://cdn.jsdelivr.net/npm/jquery@3.7.1/)
+* [Favicon.js 1.0.0](https://cdn.jsdelivr.net/npm/favicon.js@1.0.0/)
 
 ## License
 This project is licensed under the **GNU General Public License v3.0**.  
