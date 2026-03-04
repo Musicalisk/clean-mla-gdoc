@@ -1,0 +1,19 @@
+# Source files (only serve the minified versions)
+src/
+
+# GitHub configuration
+.github/
+.gitignore
+
+# Development files
+package-lock.json
+node_modules/
+
+# OS/IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local logs
+*.log
