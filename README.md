@@ -34,7 +34,7 @@ Include the minified script in your project. The library will automatically dete
 
 ```html
 <!-- Include the library after the meta tag of your head tag -->
-<script src="https://cdn.jsdelivr.net/npm/clean-mla-gdoc@v1.2/dist/clean-mla-gdoc.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clean-mla-gdoc@v1.2.2/dist/clean-mla-gdoc.min.js"></script>
 ```
 
 ## Contributing
