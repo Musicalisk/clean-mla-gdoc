@@ -1,5 +1,5 @@
 /*
- * clean-mla-gdoc.js v1.2.0
+ * clean-mla-gdoc.js v1.2.1
  * Copyright (c) 2026 Musicalisk <Musicalisk.travail@tuta.io>
  * Licensed under the GNU General Public License v3.0
  * Full license text: https://www.gnu.org
