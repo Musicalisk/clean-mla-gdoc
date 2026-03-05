@@ -1,5 +1,5 @@
 /*
- * clean-mla-gdoc.js v1.1.4
+ * clean-mla-gdoc.js v1.2.0
  * Copyright (c) 2026 Musicalisk <Musicalisk.travail@tuta.io>
  * Licensed under the GNU General Public License v3.0
  * Full license text: https://www.gnu.org
@@ -33,7 +33,7 @@
          */
         $('<style>').html(`
             @page { size: 8.5in 11in; margin: 0; }
-            html { background: #d0d0d0 !important; width: 100% !important; }
+            html { background: #d0d0d0 !important; width: 100% !important; scroll-behavior: smooth; }
             body { 
                 visibility: hidden; 
                 margin: 0 !important; 
@@ -86,12 +86,15 @@
                 line-height: .5in !important; 
                 z-index: 10; 
             }
-            .hanging-indent { text-indent: -.5in !important; padding-left: .5in !important; }
+            .hanging-indent { text-indent: -.5in !important; padding-left: .5in !important; transition: background 0.3s; }
             .centered-title { text-align: center !important; text-indent: 0 !important; }
+            .cite-link { background: transparent; transition: background 0.3s; cursor: pointer; border-radius: 2px; }
+            .active-cite { background: #fff176 !important; }
             @media print { 
                 html { background: #fff !important; } 
                 body { padding: 0 !important; visibility: visible !important; } 
                 .mla-page-container { margin: 0 auto !important; box-shadow: none !important; page-break-after: always !important; } 
+                .active-cite { background: transparent !important; }
             }
         `).appendTo('head');
 
@@ -104,7 +107,6 @@
 
             $('style').each(function() {
                 const cssText = $(this).text().replace(/\s+/g, '');
-                // Find the class (e.g. .c5) matching the orphans/widows/text-align:right signature
                 const match = cssText.match(new RegExp(`\\.([^\\{]+)\\{[^\\}]*${targetSigClean.replace(/;/g, '[^\\}]*;')}`));
                 if (match && match[1]) {
                     dH = match[1];
@@ -112,13 +114,13 @@
                 }
             });
 
-            // Use detected class or fallback to .c1
             const sel = dH ? `.${dH}` : '.c1';
             const h = $(sel).first(), ht = h.text().trim();
-            const isD = /\|\s*draft/i.test(ht);
-            const an = String(ht.replace(/\|\s*draft.*/i, '').trim() || "Assignment");
+            
+            // Updated shorthand detection: |d triggers DRAFT and deletes suffix
+            const isD = /\|\s*d/i.test(ht);
+            const an = String(ht.replace(/\|\s*d.*/i, '').trim() || "Assignment");
 
-            // Extract Name and metadata (exclude the detected header paragraph)
             let pgs = $('p').filter(function() {
                 return $(this).text().trim().length > 0 && !$(this).hasClass(dH);
             });
@@ -130,7 +132,6 @@
 
             document.title = lName + " " + fName + " " + an;
 
-            // Cleanup raw header elements
             $(sel).remove();
             $('*').filter(function() {
                 return ($(this).css('text-align') === 'right' || $(this).css('position') === 'absolute') && $(this).text().includes(lName);
@@ -187,19 +188,47 @@
                 }
             });
 
+            // Sorting and adding Citation ID for linking
             if (ci.length > 0) {
-                ci.sort((a, b) => a.text().trim().localeCompare(b.text().trim())).forEach(i => re(i))
+                ci.sort((a, b) => a.text().trim().localeCompare(b.text().trim())).forEach(i => {
+                    let citeName = i.text().trim().split(',')[0].split(' ').pop();
+                    i.attr('data-link', citeName);
+                    re(i);
+                });
             }
 
+            // In-text Citation Linking
+            const cReg = /\(([^)]+)\)/g;
+            $('.mla-page-container p').each(function() {
+                let html = $(this).html();
+                if (html.includes('(')) {
+                    $(this).html(html.replace(cReg, m => {
+                        let citeName = m.replace(/[()]/g, '').split(' ')[0];
+                        return `<span class="cite-link" data-link="${citeName}">${m}</span>`;
+                    }));
+                }
+            });
+
+            // Interaction Handlers
+            $('body').on('mouseenter', '.cite-link, .hanging-indent', function() {
+                let id = $(this).attr('data-link');
+                $(`[data-link="${id}"]`).addClass('active-cite');
+            }).on('mouseleave', '.cite-link, .hanging-indent', function() {
+                $('[data-link]').removeClass('active-cite');
+            }).on('click', '.cite-link', function() {
+                let id = $(this).attr('data-link'),
+                    target = $(`.hanging-indent[data-link="${id}"]`);
+                if (target.length) {
+                    $('html, body').animate({ scrollTop: target.offset().top - 100 }, 500);
+                }
+            });
+
             $('body').css('visibility', 'visible');
-            
-            // Execute Favicon animation
             loadScript(L.faviconUrl, () => {
                 if (window.favicon || window.favico) (window.favicon || window.favico).animate(L.iconFrames, 1750);
             });
         }, 600);
     };
 
-    // Entry point
     window.jQuery ? initializeCleanMLAG() : loadScript(L.jqueryUrl, initializeCleanMLAG);
 })();
