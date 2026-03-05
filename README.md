@@ -1,4 +1,4 @@
-# clean-mla-gdoc v1.1.4
+# clean-mla-gdoc v1.2.0
 
 A lightweight JavaScript library specifically designed to reformat **Google Docs HTML exports** into the **MLA (Modern Language Association) Style** layout. It handles physical pagination, alphabetical sorting of Works Cited, and provides a "DRAFT" watermark feature.
 
@@ -11,7 +11,8 @@ A lightweight JavaScript library specifically designed to reformat **Google Docs
 *   **MLA Header**: Processes the 4-line header and title from Google Docs classes.
 *   **Smart Date Mapping**: Converts numerical dates (e.g., `25/12/2026`) to MLA format (`25 Dec. 2026`).
 *   **Works Cited Sorting**: Automatically alphabetizes the "Works Cited" section.
-*   **Draft Mode**: Trigger a "DRAFT" watermark by adding `| draft` to your document header.
+*   **Draft Mode**: Trigger a "DRAFT" watermark by adding `|d` to your document header.
+*   **Highlighted Citations**: hovering cursor over citations highlights them, and clicking them brings user to work cited.
 
 ## How the Tab Title Works
 The script automatically updates the browser tab title following a professional file-naming convention. It extracts the student's name from the first paragraph and the assignment title from the header. To maintain a professional look, the script **strips the `| draft` flag** from the tab title while retaining it for the watermark logic.
@@ -22,8 +23,8 @@ The script automatically updates the browser tab title following a professional 
 
 ### Enabling Draft Mode
 To enable the "DRAFT" watermark across all pages, include the string `| draft` (case-insensitive) in the document header. 
-*   **Requirement**: The `| draft` flag **must be placed after** the assignment name.
-*   *Example:* `English Essay | draft`
+*   **Requirement**: The `|d` flag **must be placed after** the assignment name.
+*   *Example:* `English Essay |d`
 
 ### Works Cited
 Any content following an element containing the text "Works Cited" will be moved to its own page and sorted alphabetically based on the first word of each entry.
@@ -33,13 +34,13 @@ Include the minified script in your project. The library will automatically dete
 
 ```html
 <!-- Include the library after the meta tag of your head tag -->
-<script src="https://cdn.jsdelivr.net/npm/clean-mla-gdoc@v1.1.4/dist/clean-mla-gdoc.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clean-mla-gdoc@v1.2.0/dist/clean-mla-gdoc.min.js"></script>
 ```
 
 ## Contributing
 Contributions are welcome! If Google Docs updates its HTML export structure, please feel free to:
 1. **Fork** the repository.
-2. **Update** the selectors in the unminified `cleanMLAGDoc.js`.
+2. **Update** the selectors in the unminified `clean-mla-gdoc.js`.
 3. Submit a **Pull Request** with a description of the changes.
 
 ## Dependencies
