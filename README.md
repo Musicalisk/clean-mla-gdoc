@@ -1,4 +1,4 @@
-# clean-mla-gdoc v1.2.3
+# clean-mla-gdoc v1.2.4
 
 A lightweight JavaScript library specifically designed to reformat **Google Docs HTML exports** into the **MLA (Modern Language Association) Style** layout. It handles physical pagination, alphabetical sorting of Works Cited, and provides a "DRAFT" watermark feature.
 
@@ -34,7 +34,7 @@ Include the minified script in your project. The library will automatically dete
 
 ```html
 <!-- Include the library after the meta tag of your head tag -->
-<script src="https://cdn.jsdelivr.net/npm/clean-mla-gdoc@v1.2.3/dist/clean-mla-gdoc.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clean-mla-gdoc@v1.2.4/dist/clean-mla-gdoc.min.js"></script>
 ```
 
 ## Contributing
